@@ -27,7 +27,7 @@ Quickly input product into inventory and make it available to consumers. Keep tr
 
 Merek - Employee UI/handlebars
 Tyler - DB/Sequalize/ORM
-Thomas - API routes/controllers
+Thomas - API routes/controllers/json authentication/seed files/testing
 
 
 
