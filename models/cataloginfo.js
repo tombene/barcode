@@ -21,8 +21,12 @@ module.exports = function (sequelize, DataTypes) {
 			type: DataTypes.BIGINT,
 			allowNull: true
 		},
+		title: {
+			type: DataTypes.STRING(80),
+			allowNull: true
+		},
 		description: {
-			type: DataTypes.STRING(255),
+			type: DataTypes.TEXT,
 			allowNull: true
 		},
 		msrp: {
