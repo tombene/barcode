@@ -16,9 +16,6 @@ app.use(bodyParser.json());
 // Static directory to be served
 app.use(express.static("public"));
 
-// Requiring our models for syncing
-var db = require("./models");
-
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
@@ -32,6 +29,7 @@ require("./controllers/barcode_controller.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
+
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
