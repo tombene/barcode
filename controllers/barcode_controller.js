@@ -22,9 +22,13 @@ module.exports = function (app) {
 	app.get('/login', (req, res) => {
 		res.render("login");
 	});
+	
+	app.get('/newUser', (req, res) => {
+		res.render("newUser");
+	});
 
-	app.get('/login', (req,res) => {
-		res.render("login");
+	app.get('/item', (req,res) => {
+		res.render("item");
 	});
 
 	app.post('/login', (req, res) => {
