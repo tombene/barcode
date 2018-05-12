@@ -53,7 +53,7 @@ module.exports = function (sequelize, DataTypes) {
 			type: DataTypes.DATE,
 			allowNull: true
 		},
-		attributes: {
+		attribute: {
 			type: DataTypes.BIGINT,
 			allowNull: true
 		},

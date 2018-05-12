@@ -3,24 +3,8 @@ var express = require("express");
 var jwt = require("jsonwebtoken");
 
 //Local Dependencies
-var barcode = require("../models/catalogimage.js");
-var barcode = require("../models/cataloginfo.js");
-var barcode = require("../models/cataloginfoattribute.js");
-var barcode = require("../models/cataloginfoattributevalue.js");
-var barcode = require("../models/cataloginfocategory.js");
-var barcode = require("../models/cataloginfocategoryattribute.js");
-var barcode = require("../models/index.js");
-var barcode = require("../models/item.js");
-var barcode = require("../models/itemcondition.js");
-var barcode = require("../models/itemconditioninfo.js");
-var barcode = require("../models/itemimage.js");
-var barcode = require("../models/itemtype.js");
-var barcode = require("../models/load.js");
-var barcode = require("../models/packagingcondition.js");
-var barcode = require("../models/productsource.js");
-var barcode = require("../models/purchasetype.js");
-var barcode = require("../models/securityuser.js");
-var barcode = require("../models/unit.js");
+var db = require("../models");
+
 
 
 
@@ -45,10 +29,10 @@ module.exports = function (app) {
 		res.render("login");
 	});
 
-	app.post('/authenticate', function (req, res) {
+	app.post('/login', function (req, res) {
 
 		// find the user
-		User.findOne({
+		db.securityuser.findOne({
 			name: req.body.name
 		}, function (err, user) {
 
@@ -86,37 +70,37 @@ module.exports = function (app) {
 		});
 	});
 
-	app.post('/login', (req, res) => {
-		var message;
-		for (var user of users) {
-			if (user.name != req.body.name) {
-				message = "Wrong Name";
-			} else {
-				if (user.password != req.body.password) {
-					message = "Wrong Password";
-					break;
-				}
-				else {
-					//create the token.
-					var token = jwt.sign(user, "samplesecret");
-					message = "Login Successful";
-					break;
-				}
-			}
-		}
-		//If token is present pass the token to client else send respective message
-		if (token) {
-			res.status(200).json({
-				message,
-				token
-			});
-		}
-		else {
-			res.status(403).json({
-				message
-			});
-		}
-	});
+	// app.post('/login', (req, res) => {
+	// 	var message;
+	// 	for (var user of users) {
+	// 		if (user.name != req.body.name) {
+	// 			message = "Wrong Name";
+	// 		} else {
+	// 			if (user.password != req.body.password) {
+	// 				message = "Wrong Password";
+	// 				break;
+	// 			}
+	// 			else {
+	// 				//create the token.
+	// 				var token = jwt.sign(user, "samplesecret");
+	// 				message = "Login Successful";
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+	// 	//If token is present pass the token to client else send respective message
+	// 	if (token) {
+	// 		res.status(200).json({
+	// 			message,
+	// 			token
+	// 		});
+	// 	}
+	// 	else {
+	// 		res.status(403).json({
+	// 			message
+	// 		});
+	// 	}
+	// });
 
 	app.use((req, res, next) => {
 		// check header or url parameters or post parameters for token
