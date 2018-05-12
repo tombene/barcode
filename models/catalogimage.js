@@ -25,12 +25,8 @@ module.exports = function (sequelize, DataTypes) {
 		});
 		
 	catalogimage.associate = function (models) {
-		models.catalogimage.belongsTo(models.cataloginfo, {
-			foreignKey: {
-				allowNull: false
-			}
-		});
-	}
+		models.catalogimage.belongsTo(models.cataloginfo);
+	};
 
 	return catalogimage;
 };

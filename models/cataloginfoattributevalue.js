@@ -8,14 +8,15 @@ module.exports = function (sequelize, DataTypes) {
 			primaryKey: true,
 			autoIncrement: true
 		},
-		catalogInfoId: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
-		catalogInfoAttributeId: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
+		// catalogInfoId: {
+		// 	type: DataTypes.BIGINT,
+		// 	allowNull: true,
+		// 	foreignKey: true
+		// },
+		// catalogInfoAttributeId: {
+		// 	type: DataTypes.BIGINT,
+		// 	allowNull: true
+		// },
 		value: {
 			type: DataTypes.STRING(255),
 			allowNull: true
@@ -24,7 +25,8 @@ module.exports = function (sequelize, DataTypes) {
 			tableName: 'cataloginfoattributevalue'
 		});
 	cataloginfoattributevalue.associate = function (models) {
-		models.cataloginfoattributevalue.belongsTo([models.cataloginfoattribute, models.cataloginfo]);
+		models.cataloginfoattributevalue.belongsTo(models.cataloginfoattribute);
+		models.cataloginfoattributevalue.belongsTo(models.cataloginfo);
 	};
 	return cataloginfoattributevalue;
 };
