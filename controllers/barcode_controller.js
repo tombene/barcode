@@ -3,7 +3,25 @@ var express = require("express");
 var jwt = require("jsonwebtoken");
 
 //Local Dependencies
-// var barcode = require("../models/barcode.js");
+var barcode = require("../models/catalogimage.js");
+var barcode = require("../models/cataloginfo.js");
+var barcode = require("../models/cataloginfoattribute.js");
+var barcode = require("../models/cataloginfoattributevalue.js");
+var barcode = require("../models/cataloginfocategory.js");
+var barcode = require("../models/cataloginfocategoryattribute.js");
+var barcode = require("../models/index.js");
+var barcode = require("../models/item.js");
+var barcode = require("../models/itemcondition.js");
+var barcode = require("../models/itemconditioninfo.js");
+var barcode = require("../models/itemimage.js");
+var barcode = require("../models/itemtype.js");
+var barcode = require("../models/load.js");
+var barcode = require("../models/packagingcondition.js");
+var barcode = require("../models/productsource.js");
+var barcode = require("../models/purchasetype.js");
+var barcode = require("../models/securityuser.js");
+var barcode = require("../models/unit.js");
+
 
 
 module.exports = function (app) {
