@@ -85,8 +85,10 @@ module.exports = function (sequelize, DataTypes) {
 			tableName: 'cataloginfo'
 		});
 	cataloginfo.associate = function (models) {
-		models.cataloginfo.hasMany([models.catalogimage, models.cataloginfoattributevalue]);
-		models.cataloginfo.belongsTo([models.securityuser,models.cataloginfocategory]);
+		models.cataloginfo.hasMany(models.cataloginfoattributevalue);
+		models.cataloginfo.hasMany(models.catalogimage);
+		models.cataloginfo.belongsTo(models.securityuser);
+		models.cataloginfo.belongsTo(models.cataloginfocategory);
 	}
 	return cataloginfo;
 };

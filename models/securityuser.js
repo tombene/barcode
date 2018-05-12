@@ -32,7 +32,8 @@ module.exports = function (sequelize, DataTypes) {
 			tableName: 'securityuser'
 		});
 	securityuser.associate = function (models) {
-		models.securityuser.hasMany([models.cataloginfo, models.item])
+		models.securityuser.hasMany(models.cataloginfo);
+		models.securityuser.hasMany(models.item);
 	}
 	return securityuser;
 };

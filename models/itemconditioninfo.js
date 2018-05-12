@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
 			tableName: 'itemconditioninfo'
 		});
 	itemconditioninfo.associate = function (models) {
-		models.itemconditioninfo.hasMany([models.item])
+		models.itemconditioninfo.hasMany(models.item)
 	}
 	return itemconditioninfo;
 };

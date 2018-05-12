@@ -45,7 +45,8 @@ module.exports = function (sequelize, DataTypes) {
 			tableName: 'cataloginfocategory'
 		});
 	cataloginfocategory.associate = function (models) {
-		models.cataloginfocategory.hasMany([models.cataloginfo, models.cataloginfocategoryattribute]);
+		models.cataloginfocategory.hasMany(models.cataloginfocategoryattribute);
+		models.cataloginfocategory.hasMany(models.cataloginfo);
 	}
 	return cataloginfocategory;
 };
