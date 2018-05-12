@@ -43,6 +43,16 @@ module.exports = function (sequelize, DataTypes) {
 		alphaId: {
 			type: DataTypes.STRING(20),
 			allowNull: true
+		},
+		createdAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
 		}
 	}, {
 			tableName: 'unit'

@@ -20,6 +20,16 @@ module.exports = function (sequelize, DataTypes) {
 		value: {
 			type: DataTypes.STRING(255),
 			allowNull: true
+		},
+		createdAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
 		}
 	}, {
 			tableName: 'cataloginfoattributevalue'
