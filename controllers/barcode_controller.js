@@ -3,7 +3,7 @@ var express = require("express");
 var jwt = require("jsonwebtoken");
 
 //Local Dependencies
-var barcode = require("../models/barcode.js");
+// var barcode = require("../models/barcode.js");
 
 
 module.exports = function (app) {
@@ -17,6 +17,10 @@ module.exports = function (app) {
 
 	app.get('/', (req, res) => {
 		res.render("index");
+	});
+	
+	app.get('/login', (req, res) => {
+		res.render("login");
 	});
 
 	app.get('/login', (req,res) => {
