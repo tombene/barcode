@@ -13,10 +13,6 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: false,
 			defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
 		},
-		productSourceId: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
 		manifestId: {
 			type: DataTypes.STRING(255),
 			allowNull: true

@@ -49,7 +49,8 @@ module.exports = function (sequelize, DataTypes) {
 		});
 	unit.associate = function (models) {
 		models.unit.hasMany(models.item);
-		models.unit.belongsTo([models.purchasetype, models.load])
+		models.unit.belongsTo(models.load);
+		models.unit.belongsTo(models.purchasetype);
 	}
 	return unit;
 };

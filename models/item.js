@@ -13,20 +13,8 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: false,
 			defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
 		},
-		unitId: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
-		catalogInfoId: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
 		itemCondition: {
 			type: DataTypes.STRING(255),
-			allowNull: true
-		},
-		itemConditionInfoId: {
-			type: DataTypes.BIGINT,
 			allowNull: true
 		},
 		packagingCondition: {
@@ -85,8 +73,13 @@ module.exports = function (sequelize, DataTypes) {
 			tableName: 'item'
 		});
 	item.associate = function (models) {
-		models.item.hasMany([models.itemimage]);
-		models.item.belongsTo([models.cataloginfo, models.itemconditioninfo, models.unit, models.packagingcondition, models.itemtype, models.securityuser])
+		models.item.hasMany(models.itemimage);
+		models.item.belongsTo(models.cataloginfo);
+		models.item.belongsTo(models.itemconditioninfo);
+		models.item.belongsTo(models.unit);
+		models.item.belongsTo(models.packagingcondition);
+		models.item.belongsTo(models.itemtype);
+		models.item.belongsTo(models.securityuser);
 	}
 	return item;
 };

@@ -32,7 +32,8 @@ module.exports = function (sequelize, DataTypes) {
 			tableName: 'cataloginfoattribute'
 		});
 	cataloginfoattribute.associate = function (models) {
-		models.cataloginfoattribute.hasMany([models.cataloginfoattributevalue, models.cataloginfocategoryattribute])
+		models.cataloginfoattribute.hasMany(models.cataloginfoattributevalue);
+		models.cataloginfoattribute.hasMany(models.cataloginfocategoryattribute);
 	};
 	return cataloginfoattribute;
 };
