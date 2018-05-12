@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: true
 		},
 		valuesRegex: {
-			type: DataTypes.STRING(255),
+			type: DataTypes.TEXT,
 			allowNull: true
 		},
 		uiType: {
@@ -27,6 +27,16 @@ module.exports = function (sequelize, DataTypes) {
 		validationErrorMessage: {
 			type: DataTypes.STRING(255),
 			allowNull: true
+		},
+		createdAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
 		}
 	}, {
 			tableName: 'cataloginfoattribute'

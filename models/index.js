@@ -9,10 +9,10 @@ var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 //database wide options
 var opts = {
-	define: {
-			//prevent sequelize from pluralizing table names
-			freezeTableName: true
-	}
+	// define: {
+	// 		//prevent sequelize from pluralizing table names
+	// 		freezeTableName: true
+	// }
 };
 
 if (config.use_env_variable) {
