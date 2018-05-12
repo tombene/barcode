@@ -20,10 +20,18 @@ module.exports = function (app) {
 	app.get('/', (req, res) => {
 		res.render("login");
 	});
+	
+	app.get('/newUser', (req, res) => {
+		res.render("newUser");
+	});
+
+	app.get('/item', (req,res) => {
+		res.render("item");
+	});
 
 	app.get('/index', (req, res) => {
 		res.render("index");
-	})
+	});
 
 	app.get('/login', (req, res) => {
 		res.render("login");
