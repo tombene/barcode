@@ -9,13 +9,6 @@ var db = require("../models");
 
 
 module.exports = function (app) {
-	// app.get("/", function (req, res) {
-
-	// 	burger.getBurgers(function (data) {
-	// 		console.log(data);
-	// 		res.render("index", { burgers: data });
-	// 	});
-	// });
 
 	app.get('/', (req, res) => {
 		res.render("login");
