@@ -40,6 +40,16 @@ module.exports = function (sequelize, DataTypes) {
 		ignoreInheritedAttributes: {
 			type: DataTypes.BOOLEAN,
 			allowNull: true
+		},
+		createdAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
 		}
 	}, {
 			tableName: 'cataloginfocategory'

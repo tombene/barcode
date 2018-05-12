@@ -36,6 +36,16 @@ module.exports = function (sequelize, DataTypes) {
 		dateNotified: {
 			type: DataTypes.DATE,
 			allowNull: true
+		},
+		createdAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
 		}
 	}, {
 			tableName: 'load'

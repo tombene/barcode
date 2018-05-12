@@ -27,6 +27,16 @@ module.exports = function (sequelize, DataTypes) {
 		active: {
 			type: DataTypes.INTEGER(1),
 			allowNull: true
+		},
+		createdAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
 		}
 	}, {
 			tableName: 'securityuser'

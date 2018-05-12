@@ -1,14 +1,15 @@
+use enterprisedb;
 INSERT INTO SecurityUser (firstName,lastName,userName,password,active) 
 VALUES 
-("Thomas","Benedict","tbenedict","password"),
-("Merek","Smith","msmith","password"),
-("Tyler","Schmauch","tschmauch","password");
+("Thomas","Benedict","tbenedict","password",1),
+("Merek","Smith","msmith","password",1),
+("Tyler","Schmauch","tschmauch","password",1);
 
 INSERT INTO PurchaseType (description) 
 VALUES
 ("consignment"),("bid"),("purchase");
 
-INSERT INTO ProductSource ("name","user","password")
+INSERT INTO ProductSource (name,user,password)
 VALUES 
 ("ours","master","password"),
 ("my budy","mybudy","password"),
@@ -22,10 +23,10 @@ INSERT INTO ItemType (description)
 VALUES
 ("Commodity"),("Fee"),("Service");
 
-INSERT INTO PackageCondition (description)
+INSERT INTO PackagingCondition (description)
 VALUES
 ("Missing"),
-,("OriginalLight")
+("OriginalLight")
 ,("OriginalModerate")
 ,("OriginalOpened")
 ,("OriginalOpenedLight")
@@ -42,7 +43,7 @@ VALUES
 ,("UnoriginalPristine")
 ,("UnoriginalSevere");
 
-INSERT INTO CatalogInfoAttribute (description,valuesCSV,valuesRegex,uiType,validationErrorMsg)
+INSERT INTO CatalogInfoAttribute (description,valuesCSV,valuesRegex,uiType,validationErrorMessage)
 VALUES
 ("Length (Inches)","NULL","^\d+(\.\d+)?$","TextInput","Length must be in inches.")
 ,("Height (Inches)","NULL","^\d+(\.\d+)?$","TextInput","Height must be in inches.")

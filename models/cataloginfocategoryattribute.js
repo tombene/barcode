@@ -8,6 +8,16 @@ module.exports = function (sequelize, DataTypes) {
 			primaryKey: true,
 			autoIncrement: true
 		},
+		createdAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		},
+		updatedAt: {
+			type: DataTypes.DATE,
+			field: 'beginTime',
+			defaultValue: sequelize.literal('NOW()')
+		}
 		// catalogInfoCategoryId: {
 		// 	type: DataTypes.BIGINT,
 		// 	allowNull: true
