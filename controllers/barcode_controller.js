@@ -23,6 +23,10 @@ module.exports = function (app) {
 		res.render("login");
 	});
 
+	app.get('/login', (req,res) => {
+		res.render("login");
+	});
+
 	app.post('/login', (req, res) => {
 		var message;
 		for (var user of users) {

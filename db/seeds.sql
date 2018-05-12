@@ -1,4 +1,80 @@
-INSERT INTO CatalogInfoCategory (id,parentId,name,level,trail,ignoreInheritedAttributes) VALUES (1,681,"Antiques",2,"Art -> Antiques",0                                                                                                 );                                 
+INSERT INTO SecurityUser (firstName,lastName,userName,password,active) 
+VALUES 
+("Thomas","Benedict","tbenedict","password"),
+("Merek","Smith","msmith","password"),
+("Tyler","Schmauch","tschmauch","password");
+
+INSERT INTO PurchaseType (description) 
+VALUES
+("consignment"),("bid"),("purchase");
+
+INSERT INTO ProductSource ("name","user","password")
+VALUES 
+("ours","master","password"),
+("my budy","mybudy","password"),
+("your budy", "ybudy","password");
+
+INSERT INTO ItemCondition (description)
+VALUES
+("DamageLight"),("DamageModerate"),("DamageSevere"),("IncompleteDamageLight"),("IncompleteDamageModerate"),("IncompleteDamageSevere"),("IncompleteUsedHeavily"),("IncompleteUsedLightly"),("IncompleteUsedModerately"),("New"),("UsedHeavily"),("UsedLightly"),("UsedModerately"),("UsedRestored");
+
+INSERT INTO ItemType (description)
+VALUES
+("Commodity"),("Fee"),("Service");
+
+INSERT INTO PackageCondition (description)
+VALUES
+("Missing"),
+,("OriginalLight")
+,("OriginalModerate")
+,("OriginalOpened")
+,("OriginalOpenedLight")
+,("OriginalOpenedModerate")
+,("OriginalOpenedSevere")
+,("OriginalPristine")
+,("OriginalSevere")
+,("UnoriginalLight")
+,("UnoriginalModerate")
+,("UnoriginalOpened")
+,("UnoriginalOpenedLight")
+,("UnoriginalOpenedModerate")
+,("UnoriginalOpenedSevere")
+,("UnoriginalPristine")
+,("UnoriginalSevere");
+
+INSERT INTO CatalogInfoAttribute (description,valuesCSV,valuesRegex,uiType,validationErrorMsg)
+VALUES
+("Length (Inches)","NULL","^\d+(\.\d+)?$","TextInput","Length must be in inches.")
+,("Height (Inches)","NULL","^\d+(\.\d+)?$","TextInput","Height must be in inches.")
+,("Width (Inches)","NULL","^\d+(\.\d+)?$","TextInput","Width must be in inches.")
+,("Lot Quantity","NULL","^.+$","TextInput","This must be a number.")
+,("Mens Shoe Size","6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5,17,17.5,18,18.5,19,19.5","^(1[0-9]|[6-9])(\.(5))?$","ComboBox","This must be a legitimate shoe size.  If it is and you are getting this error message, please report this through the 'submit error' tool.")
+,("Bed Size","California King,King,Queen,Full,Double,Single,Other","^(California King)|(King)|(Queen)|(Full)|(Double)|(Single)|(Other)$","ComboBox","We're looking for bed size here.")
+,("Womens Shoe Size","4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5,14,14.5,15,15.5,16,16.5","^(1[0-6]|[4-9])(\.(5))?$","ComboBox","This must be a legitimate shoe size.  If it is and you are getting this error message, please report this through the 'submit error' tool.")
+,("Toddler Shoe Size","1,1.5,2,2.5,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5","^(1[0-3]|[1-9])(\.(5))?$","ComboBox","This must be a legitimate shoe size.  If it is and you are getting this error message, please report this through the 'submit error' tool.")
+,("Kids Shoe Size","1,1.5,2,2.5,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,12.5,13,13.5","^(1[0-3]|[1-9])(\.(5))?$","ComboBox","This must be a legitimate shoe size.  If it is and you are getting this error message, please report this through the 'submit error' tool.")
+,("Gender","Unspecified,Male,Female","^(Unspecified)|(Male)|(Female)$","ComboBox","Male and Female are your only options.  Anything else is lame.")
+,("Weight","NULL","^\d+(\.\d+)?((kg)|(lbs)|(g)|(mg)|(oz))$","TextInput","Weight must be filled out in kg, lbs, g, mg, or oz.")
+,("Autographed","Yes,No","^((Yes)|(No))$","ComboBox","Answer must be yes or no.")
+,("Color","NULL","^.+$","TextInput","Color must be an actual color.  Whatever you typed in wasn't even a word.")
+,("Channels","NULL","^\d+$","TextInput","Channels must be a number.")
+,("Watts","NULL","^\d+$","TextInput","Watts must be a number.")
+,("Game Console","GameCube,Wii,PSP,DS,GameBoy,XBox, XBox 360,PS2,PS3,DS","^((GameCube)|(Wii)|(PSP)|(DS)|(GameBoy)|(XBox)|(XBox 360)|(PS2)|(PS3)|(DS))$","ComboBox","Please select a console from the list.")
+,("Screen Size (Inches)","NULL","^\d+$","TextInput","Screen size must be in inches.")
+,("Megapixels","NULL","^\d+(\.[05])?$","TextInput","This must be a number.")
+,("Capacity (Megabytes)","NULL","^\d+$","TextInput","This must be a number.")
+,("Expiration Date","NULL","((^(10|12|0?[13578])([/])(3[01]|[12][0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(11|0?[469])([/])(30|[12][0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(0?2)([/])(2[0-8]|1[0-9]|0?[1-9])([/])((1[8-9]\d{2})|([2-9]\d{3}))$)|(^(0?2)([/])(29)([/])([2468][048]00)$)|(^(0?2)([/])(29)([/])([3579][26]00)$)|(^(0?2)([/])(29)([/])([1][89][0][48])$)|(^(0?2)([/])(29)([/])([2-9][0-9][0][48])$)|(^(0?2)([/])(29)([/])([1][89][2468][048])$)|(^(0?2)([/])(29)([/])([2-9][0-9][2468][048])$)|(^(0?2)([/])(29)([/])([1][89][13579][26])$)|(^(0?2)([/])(29)([/])([2-9][0-9][13579][26])$))","TextInput","Please put in a valid date.")
+,("Pack Quantity","NULL","^\d+$","TextInput","This must be a number.")
+,("Pieces Per Set","NULL","^\d+$","TextInput","This must be a number.")
+,("Shirt Size","NULL","^.+$","TextInput","Please put in a valid shirt size.")
+,("Size","NULL","^.+$","TextInput","Please put in a valid size.")
+,("Processor Type","NULL","^.+$","TextInput","Please enter a processor type.")
+,("Processor Speed","NULL","^.+$","TextInput","Please enter a processor speed.")
+,("Memory","NULL","^.+$","TextInput","Please enter the total memory.")
+,("Hard Drive Size","NULL","^.+$","TextInput","Please enter the drive size.")
+,("Operating System","NULL","^.+$","TextInput","Please enter an OS.");
+
+INSERT INTO CatalogInfoCategory (id,parentId,name,level,trail,ignoreInheritedAttributes) VALUES (1,681,"Antiques",2,"Art -> Antiques",0);                                 
 INSERT INTO CatalogInfoCategory (id,parentId,name,level,trail,ignoreInheritedAttributes) VALUES (2,681,"Autographed Items",2,"Art -> Autographed Items",1);
 INSERT INTO CatalogInfoCategory (id,parentId,name,level,trail,ignoreInheritedAttributes) VALUES (3,681,"Figurines/Statues",2,"Art -> Figurines/Statues",0);
 INSERT INTO CatalogInfoCategory (id,parentId,name,level,trail,ignoreInheritedAttributes) VALUES (4,681,"Framed Art",2,"Art -> Framed Art",0);
