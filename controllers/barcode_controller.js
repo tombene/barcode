@@ -5,17 +5,7 @@ var jwt = require("jsonwebtoken");
 //Local Dependencies
 var db = require("../models");
 
-
-
-
 module.exports = function (app) {
-	// app.get("/", function (req, res) {
-
-	// 	burger.getBurgers(function (data) {
-	// 		console.log(data);
-	// 		res.render("index", { burgers: data });
-	// 	});
-	// });
 
 	app.get('/', (req, res) => {
 		res.render("login");
@@ -31,6 +21,30 @@ module.exports = function (app) {
 
 	app.get('/index', (req, res) => {
 		res.render("index");
+	});
+
+	//get all catalog info items that have a matching upc
+	app.get('/app/upc/:upc', (req, res) => {
+		db.cataloginfo.findOne({
+			where: {
+				upc: req.params.upc
+			}
+		}).then(function (results) {
+			// res.json(results);
+			res.render("itemform", { itemDetails: results });
+		});
+	});
+
+	//get all catalog info items that have a matching model
+	app.get('/app/model/:model', (req, res) => {
+		db.cataloginfo.findAll({
+			where: {
+				model: req.params.model
+			}
+		}).then(function (results) {
+			//res.json(results);
+			res.render("itemform",{ itemDetails: results });
+		});
 	});
 
 
