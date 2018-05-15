@@ -47,6 +47,10 @@ module.exports = function (app) {
 		});
 	});
 
+	app.put('/app/create/:catalogExists/:data', (req,res) => {
+
+	})
+
 
 	app.post('/login', function (req, res) {
 

@@ -76,10 +76,6 @@ module.exports = function (sequelize, DataTypes) {
 			type: DataTypes.BOOLEAN,
 			allowNull: true
 		},
-		createdBy: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
 		createdAt: {
 			type: DataTypes.DATE,
 			field: 'beginTime',
