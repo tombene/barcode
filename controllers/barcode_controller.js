@@ -20,12 +20,12 @@ module.exports = function (app) {
 	app.get('/', (req, res) => {
 		res.render("login");
 	});
-	
+
 	app.get('/newUser', (req, res) => {
 		res.render("newUser");
 	});
 
-	app.get('/item', (req,res) => {
+	app.get('/item', (req, res) => {
 		res.render("item");
 	});
 
@@ -33,9 +33,6 @@ module.exports = function (app) {
 		res.render("index");
 	});
 
-	app.get('/login', (req, res) => {
-		res.render("login");
-	});
 
 	app.post('/login', function (req, res) {
 
