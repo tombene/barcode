@@ -1,4 +1,9 @@
 use enterprisedb;
+
+INSERT INTO cataloginfo (categoryid,title,description,msrp,upc,manufacturer,taxable,createdBy,securityUserId,catalogInfoCategoryId)
+VALUES
+(233,"Purified Drinking Water","Processed By Advanced Filtration, Ozone and Reverse Osmosis Technologies.",0.25,"011110816405","Kroger",1,1,1,233);
+
 INSERT INTO SecurityUser (firstName,lastName,userName,password,active) 
 VALUES 
 ("Thomas","Benedict","tbenedict","password",1),
@@ -22,6 +27,28 @@ VALUES
 INSERT INTO ItemType (description)
 VALUES
 ("Commodity"),("Fee"),("Service");
+
+INSERT INTO CatalogeInfoCategoryAttribute (CatalogInfoAttributeId,CatalogInfoCategoryId)
+VALUES
+(11,183),(11,184),(11,185),(11,186),
+(11,187),(11,188),(11,189),(11,190),
+(11,191),(11,192),(11,193),(11,194),
+(11,195),(11,196),(11,197),(11,198),
+(11,199),(11,200),(11,201),(11,202),
+(11,203),(11,204),(11,205),(11,206),
+(11,207),(11,208),(11,209),(11,210),
+(11,211),(11,212),(11,213),(11,214),
+(11,215),(11,216),(11,217),(11,218),
+(11,219),(11,220),(11,221),(11,222),
+(11,223),(11,224),(11,225),(11,226),
+(11,227),(11,228),(11,229),(11,230),
+(11,231),(11,232),(11,233),(11,234),
+(11,235),(11,236),(11,237),(11,238),
+(11,239),(11,240),(11,241),(11,242),
+(11,243),(11,244),(11,245),(11,246),
+(11,253),(11,254),(11,255),(21,247),
+(21,248),(21,249),(21,250),(21,251),
+(21,252);
 
 INSERT INTO PackagingCondition (description)
 VALUES

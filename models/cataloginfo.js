@@ -8,19 +8,14 @@ module.exports = function (sequelize, DataTypes) {
 			primaryKey: true,
 			autoIncrement: true
 		},
-		rowversion: {
-			type: DataTypes.DATE,
-			allowNull: false,
-			defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-		},
 		categoryId: {
 			type: DataTypes.BIGINT,
 			allowNull: true
 		},
-		unitOfMeasureId: {
-			type: DataTypes.BIGINT,
-			allowNull: true
-		},
+		// unitOfMeasureId: {
+		// 	type: DataTypes.BIGINT,
+		// 	allowNull: true
+		// },
 		title: {
 			type: DataTypes.STRING(80),
 			allowNull: true
@@ -30,7 +25,7 @@ module.exports = function (sequelize, DataTypes) {
 			allowNull: true
 		},
 		msrp: {
-			type: DataTypes.DECIMAL,
+			type: DataTypes.DECIMAL(10,2),
 			allowNull: true
 		},
 		internalNumber: {
