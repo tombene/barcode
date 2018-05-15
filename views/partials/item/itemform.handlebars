@@ -8,17 +8,33 @@
 			<tr>
 				<th>UPC</th>
 				<th>Model</th>
+				<th>Title</th>
+				<th>Description</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>123129712323</td>
 				<td>Xbox One X</td>
+				<td>Xbox One X</td>
+				<td>Xbox One X</td>
+				<td>I wish I had an Xbox One X</td>
 			</tr>
 			<tr>
-				<td>24354657</td>
 				<td>Lawn Mower</td>
+				<td>Lawn Mower</td>
+				<td>Lawn Mower</td>
+				<td>I wish I had an Lawn Mower</td>
 			</tr>
+			{{!-- This should handle the incoming get request for our database data from the controller. --}}
+			{{#each itemDetails}}
+				{{!-- TODO: Put an id or class into each row? --}}
+			<tr data-id="{{id}}">
+				<td>{{upc}}</td>
+				<td>{{model}}</td>
+				<td>{{title}}</td>
+				<td>{{description}}</td>
+			</tr>
+			{{/each}}
 		</tbody>
 	</table>
 </div>
