@@ -25,6 +25,7 @@ app.set("view engine", "handlebars");
 // Routes
 // =============================================================
 require("./controllers/barcode_controller.js")(app);
+require("./controllers/image_controller.js")(app);
 
 
 // Starts the server to begin listening
