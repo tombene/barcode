@@ -6,45 +6,38 @@
 	<table id="item-data" class="display">
 		<thead>
 			<tr>
+				<th>Id</th>
 				<th>UPC</th>
 				<th>Model</th>
 				<th>Title</th>
-				<th>Description</th>
+				<th>MSRP</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="dataTable">
 			<tr>
 				<td>Xbox One X</td>
 				<td>Xbox One X</td>
 				<td>Xbox One X</td>
 				<td>I wish I had an Xbox One X</td>
+				<td>7.75</td>
 			</tr>
-			<tr>
-				<td>Lawn Mower</td>
-				<td>Lawn Mower</td>
-				<td>Lawn Mower</td>
-				<td>I wish I had an Lawn Mower</td>
-			</tr>
-			{{!-- This should handle the incoming get request for our database data from the controller. --}}
-			{{#each itemDetails}}
-				{{!-- TODO: Put an id or class into each row? --}}
-			<tr data-id="{{id}}">
-				<td>{{upc}}</td>
-				<td>{{model}}</td>
-				<td>{{title}}</td>
-				<td>{{description}}</td>
-			</tr>
-			{{/each}}
+		
 		</tbody>
 	</table>
 </div>
 
-{{!-- Scripts for the Datatables --}} 
-{{!-- Datatables jquery link --}}
+
+{{!-- Link to barcodes.js file in public/assets folder --}}
+<script src="/assets/js/amazonapi.js"></script> {{!-- Link to barcodes.js file in public/assets folder --}}
+<script src="/assets/js/walmartapi.js"></script>
+<script src="bower_components/crypto-js/crypto-js.js"></script>
+<script src="bower_components/crypto-js/enc-base64.js"></script> 
+
+{{!-- Scripts for the Datatables --}} {{!-- Datatables jquery link --}}
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	<!-- Datatables CSS -->
-	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-{{!-- Scripts to make the Javascript run --}} 
+<!-- Datatables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> 
+{{!-- Scripts to make the Javascript run --}}
 <script>
 	$(document).ready(function () {
 		$('#item-data').DataTable();
