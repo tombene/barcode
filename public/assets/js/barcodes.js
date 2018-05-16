@@ -1,27 +1,110 @@
-$(document).ready( function () {
-	
-	
+$(document).ready(function () {
+
+	var searchString;
+	var searchResults;
+	var resultArray = [];
 	// New item form lose focus functions to search our data as the user inputs item data.
-	$( "#upc" )
-  .focusout(function() {
-		var searchString = $('#upc').val();
-		console.log('UPC lost focus', searchString);
-		amazon.getItems(searchString, displayItems);
-	});
-	
-	$( "#model" )
-  .focusout(function() {
-    console.log('model lost focus')
-  });
-	
-	$( "#title" )
-  .focusout(function() {
-    console.log('title lost focus')
-  });
+	$("#upc")
+		.focusout(function () {
+			resultArray = [];
+			var searchString = $('#upc').val();
+			console.log('UPC lost focus', searchString);
+			pricingAPIs(searchString);
+
+			$.get("/api/upc/" + searchString, function (data) {
+				if(data) {
+					resultArray.push(data)
+				}
+				console.log('data', data);
+				console.log('array', resultArray);
+
+				var table = $('#item-data').DataTable();
+
+				table.destroy();
+
+				$('#item-data').DataTable({
+					data: resultArray,
+					columns: [
+						{ data: 'id' },
+						{ data: 'upc' },
+						{ data: 'model' },
+						{ data: 'title' },
+						{ data: 'msrp' }
+					]
+				});
+
+			});
+		});
+
+	$("#model")
+		.focusout(function () {
+			resultArray = [];
+			var searchString = $('#model').val();
+			console.log('model lost focus', searchString);
+			pricingAPIs(searchString);
+
+			$.get("/api/model/" + searchString, function (data) {
+				if(data) {
+					resultArray.push(data)
+				}
+				console.log('data', data);
+				console.log('array', resultArray);
+
+				var table = $('#item-data').DataTable();
+
+				table.destroy();
+
+				$('#item-data').DataTable({
+					data: resultArray,
+					columns: [
+						{ data: 'id' },
+						{ data: 'upc' },
+						{ data: 'model' },
+						{ data: 'title' },
+						{ data: 'msrp' }
+					]
+				});
+
+			});
+		});
+
+	$("#title")
+		.focusout(function () {
+			resultArray = [];
+			var searchString = $('#title').val();
+			console.log('title lost focus', searchString);
+			pricingAPIs(searchString);
+
+			$.get("/api/title/" + searchString, function (data) {
+				if(data) {
+					resultArray.push(data)
+				}
+				console.log('data', data);
+				console.log('array', resultArray);
+
+				var table = $('#item-data').DataTable();
+
+				table.destroy();
+
+				$('#item-data').DataTable({
+					data: resultArray,
+					columns: [
+						{ data: 'id' },
+						{ data: 'upc' },
+						{ data: 'model' },
+						{ data: 'title' },
+						{ data: 'msrp' }
+					]
+				});
+
+			});
+		});
+
+
+
 
 
 	// Amazon and Walmart API functionality
-	// var searchString = $('#search-input').val();
 
 	// This function will be called to pull an item from Amazon and Walmart so the user can compare prices.
 	function pricingAPIs() {
@@ -31,7 +114,8 @@ $(document).ready( function () {
 
 	// The function above will then call this displayItems function to show the user 
 	function displayItems(data, containerName) {
-		console.log('amazon data',data);
+		resultArray.push(data);
+		console.log('amazon data', data);
 		// TODO: Talk about how this needs to come in and be displayed.
 		var div = $('<div>').addClass('row ' + containerName + '-div');
 		div.append('<h1>' + '$' + data.price + '</h1>');
@@ -46,7 +130,6 @@ $(document).ready( function () {
 		}
 		div.append('<p><a href="' + data.url + '">BUY HERE!</a></p>');
 		$('#' + containerName + '-container').append(div);
-		storeSearch(containerName + ': ' + data.name + ' Price: $' + data.price);
 	};
 
 });

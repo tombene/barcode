@@ -1,4 +1,6 @@
 
+// var CryptoJS = require("crypto-js"); 
+
 // The below section formats and creates the amazon url with correctly encoded keys and timestamp.
 /////////////////////////////////////////////////////////////////////////
 
