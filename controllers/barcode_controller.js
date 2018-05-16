@@ -19,6 +19,9 @@ module.exports = function (app) {
 			res.render("item");
 	});
 	
+	app.get('/categories', (req, res) => {
+			res.render("categories");
+	});
 	
 
 	app.get('/index', (req, res) => {
@@ -49,12 +52,28 @@ module.exports = function (app) {
 		});
 	});
 
-	//get all catalog info items that have a matching model
+	//get all catalog info items that have a matching title
 	app.get('/api/title/:title', (req, res) => {
 		db.cataloginfo.findAll({
 			where: {
 				title: req.params.title
 			}
+		}).then(function (results) {
+			res.json(results);
+		});
+	});
+	
+	//get all catalog categories data
+	app.get('/api/categories/', (req, res) => {
+		db.cataloginfocategory.findAll({
+		}).then(function (results) {
+			res.json(results);
+		});
+	});
+	
+	//get all catalog categories data
+	app.get('/api/allitems/', (req, res) => {
+		db.cataloginfo.findAll({
 		}).then(function (results) {
 			res.json(results);
 		});
