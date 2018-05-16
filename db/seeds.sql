@@ -4,7 +4,8 @@ INSERT INTO SecurityUser (firstName,lastName,userName,password,active)
 VALUES 
 ("Thomas","Benedict","tbenedict","password",1),
 ("Merek","Smith","msmith","password",1),
-("Tyler","Schmauch","tschmauch","password",1);
+("Tyler","Schmauch","tschmauch","password",1),
+("Dead","Account","toast","password",0);
 
 INSERT INTO PurchaseType (description) 
 VALUES

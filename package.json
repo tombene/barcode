@@ -27,6 +27,7 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.3",
     "nightmare": "^3.0.1",
+    "pbkdf2-password": "^1.2.1",
     "sequelize": "^4.37.7"
   }
 }
