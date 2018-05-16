@@ -62,8 +62,16 @@ module.exports = function (app) {
 	app.get('/item', (req, res) => {
 		res.render("item");
 	});
+<<<<<<< HEAD
 
 
+=======
+	
+	app.get('/categories', (req, res) => {
+			res.render("categories");
+	});
+	
+>>>>>>> 10c66c1feaf5fdfa0abc14cbcab49719dc404525
 
 	app.get('/index', (req, res) => {
 		console.log(req.params);
@@ -94,12 +102,28 @@ module.exports = function (app) {
 		});
 	});
 
-	//get all catalog info items that have a matching model
+	//get all catalog info items that have a matching title
 	app.get('/api/title/:title', (req, res) => {
 		db.cataloginfo.findAll({
 			where: {
 				title: req.params.title
 			}
+		}).then(function (results) {
+			res.json(results);
+		});
+	});
+	
+	//get all catalog categories data
+	app.get('/api/categories/', (req, res) => {
+		db.cataloginfocategory.findAll({
+		}).then(function (results) {
+			res.json(results);
+		});
+	});
+	
+	//get all catalog categories data
+	app.get('/api/allitems/', (req, res) => {
+		db.cataloginfo.findAll({
 		}).then(function (results) {
 			res.json(results);
 		});
