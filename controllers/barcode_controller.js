@@ -33,8 +33,10 @@ module.exports = function (app) {
 	});
 
 	app.get('/item', (req, res) => {
-		res.render("item");
+			res.render("item");
 	});
+	
+	
 
 	app.get('/index', (req, res) => {
 		console.log(req.params);
@@ -42,14 +44,15 @@ module.exports = function (app) {
 	});
 
 	//get all catalog info items that have a matching upc
-	app.get('/api/upc/:upc', (req, res) => {
+	app.get('/api/upc/:upc', function (req, res) {
 		db.cataloginfo.findOne({
 			where: {
 				upc: req.params.upc
 			}
 		}).then(function (results) {
-			// res.json(results);
-			res.render("itemform", { itemDetails: results });
+			
+			res.json(results);
+	
 		});
 	});
 
@@ -60,8 +63,18 @@ module.exports = function (app) {
 				model: req.params.model
 			}
 		}).then(function (results) {
-			//res.json(results);
-			res.render("itemform", { itemDetails: results });
+			res.json(results);
+		});
+	});
+
+	//get all catalog info items that have a matching model
+	app.get('/api/title/:title', (req, res) => {
+		db.cataloginfo.findAll({
+			where: {
+				title: req.params.title
+			}
+		}).then(function (results) {
+			res.json(results);
 		});
 	});
 
