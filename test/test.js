@@ -1,5 +1,5 @@
 var expect = require("chai").expect;
-var barcode = require("../public/assets/js/barcode-scan");
+var barcode = require("../service/barcode-scan");
 
 describe("barcode-scan",function(){
 	it("If the barcode is too short it will return as a general barcode.", function(){

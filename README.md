@@ -9,11 +9,13 @@ Quickly input product into inventory and make it available to consumers. Keep tr
 - [ ] look up product on walmart and amazon to verify pricing or to find information.
 - [ ] make each section of information clickable and mapped to our fields so once it is clicked it will populate our forms with data.
 - [ ] allow tabing through fields to populate data or edit data. have fields in the following order: unique code (UPC, ean13, asin and etc), model, category, size, condition, package condition, webprice, ourprice, qty
+- [ ] On UPC scan populate following fields with information if a result is found. (Thomas)
 - [ ] capture images
 - [ ] Save item info
-- [ ] Security User (Employee or admin users)
+- [ ] Create New Security Users 
+- [ ] Category Admin Screen
 
-## Customer UI (Phase 2)
+## Customer UI (Phase 3)
 - [ ] create account
 - [ ] allow customer login
 - [ ] view products

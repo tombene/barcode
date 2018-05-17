@@ -2,10 +2,10 @@ use enterprisedb;
 
 INSERT INTO SecurityUser (firstName,lastName,userName,password,active) 
 VALUES 
-("Thomas","Benedict","tbenedict","password",1),
-("Merek","Smith","msmith","password",1),
-("Tyler","Schmauch","tschmauch","password",1),
-("Dead","Account","toast","password",0);
+("Thomas","Benedict","tbenedict","$2a$08$tepAEmbIbngSsyjfPHZgHOy5SoOQmHx8hct6O03ew4GWG9BoWrYGi",1),
+("Merek","Smith","msmith","$2a$08$5cN2c32OUV9mzL6Gz9fqaOT6PkbkjdV/6CegXMNZiHT41mMZkadbK",1),
+("Tyler","Schmauch","tschmauch","$2a$08$uxdxqKoad/T5HrU7c7fMZ.P9NAo9vzydfsyhPYV7vlMlfGooKpWPe",1),
+("Dead","Account","toast","$2a$08$K6XlqFTvqFA4yebgRWmzquSdufy5NcI5LLEGtOrjID8jHaiZr3lPe",0);
 
 INSERT INTO PurchaseType (description) 
 VALUES
