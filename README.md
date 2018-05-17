@@ -20,7 +20,7 @@ Quickly input product into inventory and make it available to consumers. Keep tr
 - [x] Create New Security Users UI (Merek)
 - [x] Save new user and hash password (Thomas)
 - [x] Category Management Screen (Merek)
-- [p] Login authorization and authentication (Thomas -> Able to get auth token from jwt)
+- [ ] Login authorization and authentication (Thomas -> Able to get auth token from jwt)
 
 ## Testing
 -[x] test barcode-scan method to verify it is detecting scans correctly (Thomas)
@@ -43,7 +43,8 @@ Thomas - API routes/controllers/json authentication/seed files/testing
 
 ## Production Deployment and Heroku Server Setup
  * Make sure sync force is set to false. ex: db.sequelize.sync({ force: false }). If this is not false it will recreate the tables everytime it runs.
- * remove config from the .gitignore file so that all the configurations will be set on production server.
+ * remove config, .env from the .gitignore file so that all the configurations will be set on production server.
+
 
 
 

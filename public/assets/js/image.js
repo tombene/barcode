@@ -13,6 +13,7 @@ $(document).ready(function () {
 				model: $("#model").val().trim(),
 				title: $("#title").val().trim(),
 				category: $("#category").val().trim(),
+				msrp: $("#msrp").val().trim(),
 				description: $("#exampleFormControlTextarea1").val().trim(),
 				imageUpload: $("#imageUpload").val(),
 			};
