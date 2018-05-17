@@ -21,10 +21,10 @@ $(document).ready(function () {
 				url: "/api/item",
 				data: itemData
 			})
-				.then(function (res) {
-
-					console.log("test 2");
-				});
+			.then(function(data) {
+				console.log(data);
+				window.location.href = "item";
+			});
 
 		});
 })
