@@ -9,12 +9,17 @@ $(document).ready(function () {
 			resultArray = [];
 			var searchString = $('#upc').val();
 			console.log('UPC lost focus', searchString);
+	
 			amazon.getItems(searchString);
 			walmart.getItems(searchString);
 
 			$.get("/api/upc/" + searchString, function (data) {
 				if (data) {
 					resultArray.push(data)
+					$("#model").val(data.model);
+					$("#title").val(data.title);
+					$("#category").val(data.categoryId);
+					$("textarea#exampleFormControlTextarea1").val(data.description);
 				}
 				resultArray.push(amazon.currentItem);
 				resultArray.push(walmart.currentItem);

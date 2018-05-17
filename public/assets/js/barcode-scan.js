@@ -19,17 +19,16 @@ var barcodeScan = function (scan) {
 }
 
 function isValidISBN13(code) {
-	var parsedCode = parseInt(code, 10);
-	if (parsedCode.length != 13) { return false; }
+	if (code.length != 13) { return false; }
 	else {
 		var z = 0;
 		var odd = true;
 		for (var i = 11; i >= 0; i--) {
 			if (odd) {
-				z = z + parseInt(code.substring(x, 1), 10) * 3;
+				z += parseInt(code.substring(i, 1), 10) * 3;
 				odd = false;
 			} else {
-				z = z + parseInt(code.substring(x, 1), 10);
+				z += parseInt(code.substring(i, 1), 10);
 				odd = true;
 			}
 		}
@@ -59,7 +58,6 @@ function isValidUPCA(code) {
 }
 
 function convertUPCAToISBN13(code) {
-	var parsedCode = parseInt(code, 10);
 	if (!code || code.length !== 12) { return null; }
 	else {
 		return "0" + code;

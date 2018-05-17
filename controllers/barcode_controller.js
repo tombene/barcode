@@ -134,7 +134,11 @@ module.exports = function (app) {
 		// 	console.log(user);
 		// 	res.status(200).send(user);	
 		// });
-		res.render("item");
+		db.cataloginfocategory.findAll({
+		}).then(function (results) {
+			res.render("item",{ categories: results });
+		});
+		
 	});
 
 	app.get('/categories', (req, res) => {
