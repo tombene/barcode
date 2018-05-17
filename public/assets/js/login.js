@@ -13,7 +13,7 @@ $("#login").on("click", function(event) {
     // On success, run the following code
     .then(function(data) {
       console.log(data);
-			window.location.href = "index/"+data.firstName+"/"+data.lastName;
+			window.location.href = "index";
     });
 
 });

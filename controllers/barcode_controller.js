@@ -59,32 +59,12 @@ module.exports = function (app) {
 	app.get('/index', (req, res) => {
 		// find the user
 			var user = {
-				firstName: "Best",
-				lastName: "Buddy"
+				firstName: "Admin",
+				lastName: "User"
 			}
 			res.render("index", { user });
 		
 	});
-
-	// app.get('/logout', function (req, res) {
-	// 	users = [];
-	// 	res.redirect('/login');
-	// });
-
-	// app.post('api/auth/login', (req, res) => {
-	// 	db.securityuser.findOne({where: { userName: req.body.userName }}, function (err, user) {
-	// 		console.log("hello we are authenticating");
-	// 		if (err) return res.status(500).send('Error on the server.');
-	// 		if (!user) return res.status(404).send('No user found.');
-	// 		var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
-	// 		if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-	// 		var token = jwt.sign({ id: user.id }, Jwtkey, {
-	// 			expiresIn: 86400 // expires in 24 hours
-	// 		});
-	// 		res.status(200).send({ auth: true, token: token });
-
-	// 	});
-	// });
 
 	app.get('/newUser', (req, res) => {
 		res.render("newUser");
