@@ -1,3 +1,4 @@
+require("dotenv").config();
 // NPM Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
@@ -26,7 +27,6 @@ app.set("view engine", "handlebars");
 // =============================================================
 require("./controllers/barcode_controller.js")(app);
 require("./controllers/image_controller.js")(app);
-
 
 // Starts the server to begin listening
 // =============================================================

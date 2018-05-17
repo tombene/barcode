@@ -5,47 +5,86 @@ var bcrypt = require("bcryptjs");
 
 //Local Dependencies
 var db = require("../models");
-var jwtkey = require("../keys");
-
+var keys = require("../keys");
+var Jwtkey = keys.Jwtkey.secret_key;
+var User = db.securityuser;
+var VerifyToken = require('./verifyToken');
 module.exports = function (app) {
 
 	app.get('/', (req, res) => {
 		res.render("login");
 	});
 
-	app.post('/login', (req, res) => {
-		db.securityuser.findOne({where: { userName: req.body.userName }}, function (err, user) {
-			console.log("hello we are authenticating");
-			if (err) return res.status(500).send('Error on the server.');
+	app.post('/login', function (req, res) {
+
+		User.findOne({
+			where: {
+				userName: req.body.userName
+			}
+		}).then(function (user) {
+			// if (err) return res.status(500).send('Error on the server.');
 			if (!user) return res.status(404).send('No user found.');
+
+			// check if the password is valid
 			var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 			if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
-			var token = jwt.sign({ id: user.id }, jwtkey.Jwtkey.secret_key, {
+
+			// if user is found and password is valid
+			// create a token
+			var token = jwt.sign({ id: user._id }, Jwtkey, {
 				expiresIn: 86400 // expires in 24 hours
 			});
+
+			// return the information including token as JSON
 			res.status(200).send({ auth: true, token: token });
-			
 		});
+
+	});
+
+	app.get('/me', VerifyToken, function(req, res, next) {
+	
+		User.findById(req.userId, { password: 0 }, function (err, user) {
+			if (err) return res.status(500).send("There was a problem finding the user.");
+			if (!user) return res.status(404).send("No user found.");
+			res.status(200).send(user);
+		});
+	
+	});
+
+	app.get('/logout', function(req, res) {
+		res.status(200).send({ auth: false, token: null });
+		// res.redirect("/login");
 	});
 
 	app.get('/index', (req, res) => {
 		// find the user
-		db.securityuser.findOne({
-			where: {
-				userName: req.body.userName,
-				password: req.body.password
+			var user = {
+				firstName: "Best",
+				lastName: "Buddy"
 			}
-		}).then(function (user) {
 			res.render("index", { user });
-		});
+		
 	});
 
-	app.get('/logout', function (req, res) {
-		users = [];
-		res.redirect('/login');
-	});
+	// app.get('/logout', function (req, res) {
+	// 	users = [];
+	// 	res.redirect('/login');
+	// });
 
+	// app.post('api/auth/login', (req, res) => {
+	// 	db.securityuser.findOne({where: { userName: req.body.userName }}, function (err, user) {
+	// 		console.log("hello we are authenticating");
+	// 		if (err) return res.status(500).send('Error on the server.');
+	// 		if (!user) return res.status(404).send('No user found.');
+	// 		var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
+	// 		if (!passwordIsValid) return res.status(401).send({ auth: false, token: null });
+	// 		var token = jwt.sign({ id: user.id }, Jwtkey, {
+	// 			expiresIn: 86400 // expires in 24 hours
+	// 		});
+	// 		res.status(200).send({ auth: true, token: token });
 
+	// 	});
+	// });
 
 	app.get('/newUser', (req, res) => {
 		res.render("newUser");
@@ -87,16 +126,15 @@ module.exports = function (app) {
 
 	});
 
-	app.get('/item', (req, res) => {
-		// var token = req.headers['x-access-token'];
-		// if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
-
-		// jwt.verify(token, config.secret, function (err, decoded) {
-		// 	if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-			res.render("item");
-		// 	res.status(200).send(decoded);
+	app.get('/item', /*VerifyToken,*/ (req, res) => {
+		// console.log("userid",req.userId);
+		// User.findById(req.userId, { password: 0 }, function (err, user) {
+		// 	if (err) return res.status(500).send("There was a problem finding the user.");
+		// 	if (!user) return res.status(404).send("No user found.");
+		// 	console.log(user);
+		// 	res.status(200).send(user);	
 		// });
-
+		res.render("item");
 	});
 
 	app.get('/categories', (req, res) => {

@@ -9,6 +9,11 @@ $("#login").on("click", function(event) {
   };
 
   // Send an AJAX POST-request with jQuery
-  $.post("login", user);
+  $.post("login", user)
+    // On success, run the following code
+    .then(function(data) {
+      console.log(data);
+			window.location.href = "index/"+data.firstName+"/"+data.lastName;
+    });
 
 });

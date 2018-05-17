@@ -105,3 +105,5 @@ function Right(str, n){
        return String(str).substring(iLen, iLen - n);
     }
 }
+
+module.exports = barcodeScan;
