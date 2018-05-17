@@ -793,3 +793,13 @@ VALUES
 INSERT INTO cataloginfo (categoryid,title,description,msrp,upc,manufacturer,taxable,securityUserId,catalogInfoCategoryId)
 VALUES
 (233,"Purified Drinking Water","Processed By Advanced Filtration, Ozone and Reverse Osmosis Technologies.",0.25,"011110816405","Kroger",1,1,233);
+INSERT INTO cataloginfo (categoryid,title,description,msrp,upc,model,manufacturer,taxable,securityUserId,catalogInfoCategoryId)
+VALUES
+(717,"Xbox One X","Xbox One X Game System",399.99,"889842208252", "CYV00001","Microsoft",1,1,717);
+INSERT INTO cataloginfo (categoryid,title,description,msrp,upc,model,manufacturer,taxable,securityUserId,catalogInfoCategoryId)
+VALUES
+(62,"Samsung Galaxy S7","Samsung Galaxy S7 Normal Screen",199.99,"672713615217","S7","Samsung",1,1,62);
+INSERT INTO cataloginfo (categoryid,title,description,msrp,upc,model,manufacturer,taxable,securityUserId,catalogInfoCategoryId)
+VALUES
+(443,"Dominion: 2nd Edition","Dominion: 2nd Edition Board Game",25.00,"772223961979","RIO531","Rio Grande Games",1,1,443);
+
