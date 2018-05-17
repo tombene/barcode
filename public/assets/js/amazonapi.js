@@ -107,16 +107,17 @@ function xmlToJson(xml) {
 
 var amazon = {
 	currentItem: {
-		price: 0,
+		id: "Amazon",
+		msrp: 0,
 		model: '',
 		description: '',
-		name: '',
+		title: '',
 		upc: '',
 		image: [],
 		url: '',
 		primeEligible: ''
 	},
-	getItems: function (searchTerm, displayItems) {
+	getItems: function (searchTerm, data) {
 		var amazonUrl = getAmazonURL(encodeURIComponent(searchTerm));
 		$.ajax({
 			// function below uses searchTerm to generate URL for amazon API
@@ -138,11 +139,11 @@ var amazon = {
 			if (numResults !== 0) {
 				if (numResults > 1) {
 					amazon.currentItem.image = [];
-					amazon.currentItem.price = stringReplace(amazonResults.Item[i].Offers.Offer.OfferListing.Price.FormattedPrice);
+					amazon.currentItem.msrp = stringReplace(amazonResults.Item[i].Offers.Offer.OfferListing.Price.FormattedPrice);
 					amazon.currentItem.primeEligible = stringReplace(amazonResults.Item[i].Offers.Offer.OfferListing.IsEligibleForPrime);
 					amazon.currentItem.model = stringReplace(amazonResults.Item[i].ItemAttributes.Model);
 					amazon.currentItem.description;
-					amazon.currentItem.name = stringReplace(amazonResults.Item[i].ItemAttributes.Title);
+					amazon.currentItem.title = stringReplace(amazonResults.Item[i].ItemAttributes.Title);
 					amazon.currentItem.upc = stringReplace(amazonResults.Item[i].ItemAttributes.UPC);
 					amazon.currentItem.url = stringReplace(amazonResults.Item[i].DetailPageURL);
 					// Loops through images to store but sets the limit at 5.
@@ -164,14 +165,14 @@ var amazon = {
 					}
 
 
-					displayItems(amazon.currentItem, 'amazon');
+					return data = amazon.currentItem;
 				} else {
 					amazon.currentItem.image = [];
-					amazon.currentItem.price = stringReplace(amazonResults.Item.Offers.Offer.OfferListing.Price.FormattedPrice);
+					amazon.currentItem.msrp = stringReplace(amazonResults.Item.Offers.Offer.OfferListing.Price.FormattedPrice);
 					amazon.currentItem.primeEligible = stringReplace(amazonResults.Item.Offers.Offer.OfferListing.IsEligibleForPrime);
 					amazon.currentItem.model = stringReplace(amazonResults.Item.ItemAttributes.Model);
 					amazon.currentItem.description;
-					amazon.currentItem.name = stringReplace(amazonResults.Item.ItemAttributes.Title);
+					amazon.currentItem.title = stringReplace(amazonResults.Item.ItemAttributes.Title);
 					amazon.currentItem.upc = stringReplace(amazonResults.Item.ItemAttributes.UPC);
 					amazon.currentItem.url = stringReplace(amazonResults.Item.DetailPageURL);
 					// Loops through images to store but sets the limit at 5.
@@ -197,7 +198,7 @@ var amazon = {
 						amazon.currentItem.description = 'no description available';
 					}
 
-					displayItems(amazon.currentItem, 'amazon');
+					return data = amazon.currentItem;
 				}
 			} else {
 				displayFoundNothing('amazon');
