@@ -25,7 +25,7 @@ Quickly input product into inventory and make it available to consumers. Keep tr
 ## Testing
 -[x] test barcode-scan method to verify it is detecting scans correctly (Thomas)
 
-## Customer UI (Phase 3)
+## Customer UI (Phase 2)
 - [ ] create account (ToDo)
 - [ ] allow customer login (ToDo)
 - [ ] view products (ToDo)
