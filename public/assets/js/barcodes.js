@@ -9,12 +9,16 @@ $(document).ready(function () {
 			resultArray = [];
 			var searchString = $('#upc').val();
 			console.log('UPC lost focus', searchString);
-			pricingAPIs(searchString);
+			amazon.getItems(searchString);
+			walmart.getItems(searchString);
 
 			$.get("/api/upc/" + searchString, function (data) {
-				if(data) {
+				if (data) {
 					resultArray.push(data)
 				}
+				resultArray.push(amazon.currentItem);
+				resultArray.push(walmart.currentItem);
+				console.log('model data', data);
 				console.log('data', data);
 				console.log('array', resultArray);
 
@@ -38,24 +42,22 @@ $(document).ready(function () {
 
 	$("#model")
 		.focusout(function () {
-			resultArray = [];
-			var searchString = $('#model').val();
+			let searchString = $('#model').val();
 			console.log('model lost focus', searchString);
-			pricingAPIs(searchString);
+			amazon.getItems(searchString);
+			walmart.getItems(searchString);
 
 			$.get("/api/model/" + searchString, function (data) {
-				if(data) {
-					resultArray.push(data)
-				}
-				console.log('data', data);
-				console.log('array', resultArray);
+				data.push(amazon.currentItem);
+				data.push(walmart.currentItem);
+				console.log('model data', data);
 
-				var table = $('#item-data').DataTable();
+				let table = $('#item-data').DataTable();
 
 				table.destroy();
 
 				$('#item-data').DataTable({
-					data: resultArray,
+					data: data,
 					columns: [
 						{ data: 'id' },
 						{ data: 'upc' },
@@ -70,24 +72,23 @@ $(document).ready(function () {
 
 	$("#title")
 		.focusout(function () {
-			resultArray = [];
-			var searchString = $('#title').val();
+			let searchString = $('#title').val();
 			console.log('title lost focus', searchString);
-			pricingAPIs(searchString);
-
+			amazon.getItems(searchString);
+			walmart.getItems(searchString);
+			console.log('amazon data',amazon.currentItem);
 			$.get("/api/title/" + searchString, function (data) {
-				if(data) {
-					resultArray.push(data)
-				}
+				data.push(amazon.currentItem);
+				data.push(walmart.currentItem);
 				console.log('data', data);
-				console.log('array', resultArray);
 
-				var table = $('#item-data').DataTable();
+				let table = $('#item-data').DataTable();
 
 				table.destroy();
+				console.log('table hit');
 
 				$('#item-data').DataTable({
-					data: resultArray,
+					data: data,
 					columns: [
 						{ data: 'id' },
 						{ data: 'upc' },
@@ -107,9 +108,9 @@ $(document).ready(function () {
 	// Amazon and Walmart API functionality
 
 	// This function will be called to pull an item from Amazon and Walmart so the user can compare prices.
-	function pricingAPIs() {
-		walmart.getItems(searchString, displayItems);
-		amazon.getItems(searchString, displayItems);
+	function pricingAPIs(searchString, apiDataWalmart, apiDataAmazon) {
+		amazon.getItems(searchString, apiDataAmazon);
+		walmart.getItems(searchString, apiDataWalmart);
 	};
 
 	// The function above will then call this displayItems function to show the user 

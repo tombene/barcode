@@ -12,7 +12,7 @@ module.exports = function (app) {
 		var message = 'Internal Server Error';
 		var response = '';
 		var catalogData = {
-			barcode: req.body.upc,
+			upc: req.body.upc,
 			model: req.body.model,
 			title: req.body.title,
 			// category: req.body.category,
