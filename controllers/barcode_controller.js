@@ -52,8 +52,8 @@ module.exports = function (app) {
 	});
 
 	app.get('/logout', function(req, res) {
-		res.status(200).send({ auth: false, token: null });
-		// res.redirect("/login");
+		// res.status(200).send({ auth: false, token: null });
+		res.render("login");
 	});
 
 	app.get('/index', (req, res) => {
