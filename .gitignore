@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 node_modules
-.env
 config
-=======
-node_modules
->>>>>>> a52a1a11837c9dcf554a7e4e5aaa4443df25b78b
+.env
+
