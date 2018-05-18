@@ -16,17 +16,28 @@ $(function () {
 			state: $("#inputState").val().trim(),
 			zip: $("#inputZip").val().trim()
 		};
-		if(newUser.userName !== '' && newUser.password !== ''){
+		if (newUser.userName !== '' && newUser.password !== '') {
 			$.ajax("/register", {
 				type: "POST",
 				data: newUser
 			}).then(
-				console.log("success")
+				// console.log("success");
 				// location.reload()
-			);
-		}else{
+				$("#inputUserName").empty();
+				$("#inputEmail4").empty();
+				$("#inputPassword4").empty();
+				$("#inputFirstName").empty();
+				$("#inputLastName").empty();
+				$("#inputAddress").empty();
+				$("#inputAddress2").empty();
+				$("#inputCity").empty();
+				$("#inputState").empty();
+				$("#inputZip").empty();
+				$("#success").append("Saved Successfully! Create Another?");
+			
+		} else {
 			$("#inputUserName").focus();
 		}
 	});
-	
+
 });
