@@ -31,7 +31,7 @@ module.exports = function (app) {
 
 			// if user is found and password is valid
 			// create a token
-			var token = jwt.sign({ id: user._id }, Jwtkey, {
+			var token = jwt.sign({ id: user.id }, Jwtkey, {
 				expiresIn: 86400 // expires in 24 hours
 			});
 
